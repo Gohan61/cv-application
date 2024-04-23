@@ -1,4 +1,5 @@
 import GeneralInfo from "./General-info";
+import SubmitButton from "./Buttons";
 
 export default function App() {
   return (
@@ -21,12 +22,4 @@ function Form() {
       <SubmitButton></SubmitButton>
     </form>
   );
-}
-
-function SubmitButton() {
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
-
-  return <button onClick={handleClick}>Submit</button>;
 }
