@@ -10,7 +10,14 @@ export default function App() {
     isShown ? setIsShown(false) : setIsShown(true);
   };
 
-  const [input, saveInput] = useState({ name: "", email: "", number: "" });
+  const [input, saveInput] = useState({
+    name: "",
+    email: "",
+    number: "",
+    school: "",
+    study: "",
+    graduation: "",
+  });
 
   return (
     <>

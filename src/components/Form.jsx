@@ -12,6 +12,16 @@ export default function Form({ changeShow, input, saveInput }) {
         break;
       case e.target.id === "phoneNumber":
         saveInput({ ...input, number: e.target.value });
+        break;
+      case e.target.id === "school":
+        saveInput({ ...input, school: e.target.value });
+        break;
+      case e.target.id === "study":
+        saveInput({ ...input, study: e.target.value });
+        break;
+      case e.target.id === "graduation":
+        saveInput({ ...input, graduation: e.target.value });
+        break;
     }
   }
 
@@ -44,6 +54,33 @@ export default function Form({ changeShow, input, saveInput }) {
             name="phone-number"
             id="phoneNumber"
             value={input.number}
+            onChange={submitInfo}
+          />
+        </fieldset>
+        <fieldset>
+          <legend>Educational experience</legend>
+          <label htmlFor="school">Educational institution: </label>
+          <input
+            type="text"
+            id="school"
+            name="school"
+            value={input.school}
+            onChange={submitInfo}
+          />
+          <label htmlFor="study">Title of degree: </label>
+          <input
+            type="text"
+            name="study"
+            id="study"
+            value={input.study}
+            onChange={submitInfo}
+          />
+          <label htmlFor="graduation">Year of graduation: </label>
+          <input
+            type="text"
+            id="graduation"
+            name="graduation"
+            value={input.graduation}
             onChange={submitInfo}
           />
         </fieldset>
