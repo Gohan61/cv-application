@@ -1,5 +1,4 @@
-import GeneralInfo from "./General-info";
-import SubmitButton from "./Buttons";
+import Form from "./General-info";
 import { EditButton } from "./Buttons";
 import { useState } from "react";
 
@@ -16,21 +15,10 @@ export default function App() {
         <h1>Create your own CV</h1>
       </header>
       <main>
-        {isShown && <Form changeShow={changeShow} />}
+        {isShown && <Form changeShow={changeShow} isShown={isShown} />}
         <EditButton changeShow={changeShow}></EditButton>
       </main>
       <footer>Good luck!</footer>
-    </>
-  );
-}
-
-function Form({ changeShow }) {
-  return (
-    <>
-      <form action="">
-        <GeneralInfo></GeneralInfo>
-        <SubmitButton changeShow={changeShow}></SubmitButton>
-      </form>
     </>
   );
 }
