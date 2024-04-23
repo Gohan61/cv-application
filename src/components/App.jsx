@@ -1,5 +1,6 @@
 import GeneralInfo from "./General-info";
 import SubmitButton from "./Buttons";
+import { EditButton } from "./Buttons";
 import { useState } from "react";
 
 export default function App() {
@@ -24,9 +25,12 @@ function Form() {
   };
 
   return (
-    <form action="" style={{ display: isShown ? "" : "none" }}>
-      <GeneralInfo></GeneralInfo>
-      <SubmitButton changeShow={changeShow}></SubmitButton>
-    </form>
+    <>
+      <form action="" style={{ display: isShown ? "" : "none" }}>
+        <GeneralInfo></GeneralInfo>
+        <SubmitButton changeShow={changeShow}></SubmitButton>
+      </form>
+      <EditButton changeShow={changeShow}></EditButton>
+    </>
   );
 }

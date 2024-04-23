@@ -6,3 +6,7 @@ export default function SubmitButton({ changeShow }) {
 
   return <button onClick={handleClick}>Submit</button>;
 }
+
+export function EditButton({ changeShow }) {
+  return <button onClick={changeShow}>Edit</button>;
+}
