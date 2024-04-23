@@ -26,9 +26,11 @@ export default function App() {
             saveInput={saveInput}
           />
         ) : (
-          <Display input={input}></Display>
+          <>
+            <Display input={input}></Display>
+            <EditButton changeShow={changeShow}></EditButton>
+          </>
         )}
-        <EditButton changeShow={changeShow}></EditButton>
       </main>
       <footer>Good luck!</footer>
     </>
