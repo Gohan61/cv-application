@@ -1,5 +1,6 @@
 import GeneralInfo from "./General-info";
 import SubmitButton from "./Buttons";
+import { useState } from "react";
 
 export default function App() {
   return (
@@ -16,10 +17,16 @@ export default function App() {
 }
 
 function Form() {
+  const [isShown, setIsShown] = useState(true);
+
+  const changeShow = () => {
+    isShown ? setIsShown(false) : setIsShown(true);
+  };
+
   return (
-    <form action="">
+    <form action="" style={{ display: isShown ? "" : "none" }}>
       <GeneralInfo></GeneralInfo>
-      <SubmitButton></SubmitButton>
+      <SubmitButton changeShow={changeShow}></SubmitButton>
     </form>
   );
 }
