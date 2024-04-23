@@ -152,7 +152,7 @@ export default function Form({ changeShow, input, saveInput }) {
               />
             </li>
           </ul>
-          <label htmlFor="dateStart">Start of job: </label>
+          <label htmlFor="startDate">Start of job: </label>
           <input
             type="date"
             id="startDate"
