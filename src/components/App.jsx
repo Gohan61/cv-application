@@ -18,6 +18,15 @@ function Form() {
   return (
     <form action="">
       <GeneralInfo></GeneralInfo>
+      <SubmitButton></SubmitButton>
     </form>
   );
+}
+
+function SubmitButton() {
+  const handleClick = (e) => {
+    e.preventDefault();
+  };
+
+  return <button onClick={handleClick}>Submit</button>;
 }
