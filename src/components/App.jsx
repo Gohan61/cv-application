@@ -4,20 +4,6 @@ import { EditButton } from "./Buttons";
 import { useState } from "react";
 
 export default function App() {
-  return (
-    <>
-      <header>
-        <h1>Create your own CV</h1>
-      </header>
-      <main>
-        <Form />
-      </main>
-      <footer>Good luck!</footer>
-    </>
-  );
-}
-
-function Form() {
   const [isShown, setIsShown] = useState(true);
 
   const changeShow = () => {
@@ -26,11 +12,25 @@ function Form() {
 
   return (
     <>
-      <form action="" style={{ display: isShown ? "" : "none" }}>
+      <header>
+        <h1>Create your own CV</h1>
+      </header>
+      <main>
+        {isShown && <Form changeShow={changeShow} />}
+        <EditButton changeShow={changeShow}></EditButton>
+      </main>
+      <footer>Good luck!</footer>
+    </>
+  );
+}
+
+function Form({ changeShow }) {
+  return (
+    <>
+      <form action="">
         <GeneralInfo></GeneralInfo>
         <SubmitButton changeShow={changeShow}></SubmitButton>
       </form>
-      <EditButton changeShow={changeShow}></EditButton>
     </>
   );
 }
