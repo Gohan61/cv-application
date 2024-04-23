@@ -1,4 +1,4 @@
-import Form from "./General-info";
+import Form from "./Form";
 import { EditButton } from "./Buttons";
 import { useState } from "react";
 
@@ -9,13 +9,22 @@ export default function App() {
     isShown ? setIsShown(false) : setIsShown(true);
   };
 
+  const [input, saveInput] = useState({ name: "", email: "", number: "" });
+
   return (
     <>
       <header>
         <h1>Create your own CV</h1>
       </header>
       <main>
-        {isShown && <Form changeShow={changeShow} isShown={isShown} />}
+        {isShown && (
+          <Form
+            changeShow={changeShow}
+            isShown={isShown}
+            input={input}
+            saveInput={saveInput}
+          />
+        )}
         <EditButton changeShow={changeShow}></EditButton>
       </main>
       <footer>Good luck!</footer>

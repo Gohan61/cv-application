@@ -1,9 +1,7 @@
 import { useState } from "react";
 import SubmitButton from "./Buttons";
 
-export default function Form({ changeShow }) {
-  const [input, saveInput] = useState({ name: "", email: "", number: "" });
-
+export default function Form({ changeShow, input, saveInput }) {
   function submitInfo(e) {
     switch (true) {
       case e.target.id === "name":
