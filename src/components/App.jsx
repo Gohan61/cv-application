@@ -1,6 +1,7 @@
 import Form from "./Form";
 import { EditButton } from "./Buttons";
 import { useState } from "react";
+import Display from "./Display";
 
 export default function App() {
   const [isShown, setIsShown] = useState(true);
@@ -17,13 +18,15 @@ export default function App() {
         <h1>Create your own CV</h1>
       </header>
       <main>
-        {isShown && (
+        {isShown ? (
           <Form
             changeShow={changeShow}
             isShown={isShown}
             input={input}
             saveInput={saveInput}
           />
+        ) : (
+          <Display input={input}></Display>
         )}
         <EditButton changeShow={changeShow}></EditButton>
       </main>
