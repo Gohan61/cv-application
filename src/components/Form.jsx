@@ -1,5 +1,8 @@
 import { useState } from "react";
 import SubmitButton from "./Buttons";
+import PersonalInfo from "./PersonalInfo";
+import Practical from "./Practical";
+import Education from "./Education";
 
 export default function Form({ changeShow, input, saveInput }) {
   function submitInfo(e) {
@@ -51,124 +54,9 @@ export default function Form({ changeShow, input, saveInput }) {
   return (
     <>
       <form action="" onSubmit={displayOnSubMit}>
-        <fieldset>
-          <legend>Personal Info</legend>
-          <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            id="name"
-            name="fullName"
-            value={input.name}
-            onChange={submitInfo}
-          />
-          <label htmlFor="email">Email: </label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            value={input.email}
-            onChange={submitInfo}
-          />
-          <label htmlFor="phoneNumber">Phone Number: </label>
-          <input
-            type="text"
-            name="phone-number"
-            id="phoneNumber"
-            value={input.number}
-            onChange={submitInfo}
-          />
-        </fieldset>
-        <fieldset>
-          <legend>Educational experience</legend>
-          <label htmlFor="school">Educational institution: </label>
-          <input
-            type="text"
-            id="school"
-            name="school"
-            value={input.school}
-            onChange={submitInfo}
-          />
-          <label htmlFor="study">Title of degree: </label>
-          <input
-            type="text"
-            name="study"
-            id="study"
-            value={input.study}
-            onChange={submitInfo}
-          />
-          <label htmlFor="graduation">Year of graduation: </label>
-          <input
-            type="text"
-            id="graduation"
-            name="graduation"
-            value={input.graduation}
-            onChange={submitInfo}
-          />
-        </fieldset>
-        <fieldset>
-          <legend>Practical experience</legend>
-          <label htmlFor="company">Company name: </label>
-          <input
-            type="text"
-            id="company"
-            name="company"
-            value={input.company}
-            onChange={submitInfo}
-          />
-          <label htmlFor="position">Job position: </label>
-          <input
-            type="text"
-            id="position"
-            name="position"
-            value={input.position}
-            onChange={submitInfo}
-          />
-          <ul name="responsibilities">
-            <label htmlFor="responsibilites">
-              Main responsibilites in your jobs:{" "}
-            </label>
-            <li>
-              <input
-                type="text"
-                value={input.responsibilities1}
-                onChange={submitInfo}
-                id="responsibilities1"
-              />
-            </li>
-            <li>
-              <input
-                type="text"
-                value={input.responsibilities2}
-                onChange={submitInfo}
-                id="responsibilities2"
-              />
-            </li>
-            <li>
-              <input
-                type="text"
-                value={input.responsibilities3}
-                onChange={submitInfo}
-                id="responsibilities3"
-              />
-            </li>
-          </ul>
-          <label htmlFor="startDate">Start of job: </label>
-          <input
-            type="date"
-            id="startDate"
-            name="startDate"
-            value={input.startDate}
-            onChange={submitInfo}
-          />
-          <label htmlFor="dateEnd">End of job: </label>
-          <input
-            type="date"
-            name="dateEnd"
-            id="dateEnd"
-            value={input.endDate}
-            onChange={submitInfo}
-          />
-        </fieldset>
+        <PersonalInfo input={input} submitInfo={submitInfo}></PersonalInfo>
+        <Education input={input} submitInfo={submitInfo}></Education>
+        <Practical input={input} submitInfo={submitInfo}></Practical>
         <SubmitButton changeShow={changeShow}></SubmitButton>
       </form>
     </>
