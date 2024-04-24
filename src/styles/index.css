@@ -26,3 +26,16 @@
 body {
   margin: 0;
 }
+
+form {
+  width: min(50vw, 600px);
+}
+
+form fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-left: auto;
+}
