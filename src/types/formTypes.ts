@@ -18,3 +18,9 @@ export interface practicalType {
 }
 
 export type responsibilityType = string | undefined;
+
+export interface EducationProps {
+  id: string;
+  educations: string[];
+  setEducations: React.Dispatch<React.SetStateAction<string[]>>;
+}
