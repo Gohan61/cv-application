@@ -19,8 +19,22 @@ export interface practicalType {
 
 export type responsibilityType = string | undefined;
 
-export interface EducationProps {
+type FormComponentProps<T, K extends string, SetterKey extends string> = {
+  [key in K]: T[];
+} & {
+  [setState in SetterKey]: React.Dispatch<React.SetStateAction<T[]>>;
+} & {
   id: string;
-  educations: string[];
-  setEducations: React.Dispatch<React.SetStateAction<string[]>>;
-}
+};
+
+export type EducationProps = FormComponentProps<
+  string,
+  "educations",
+  "setEducations"
+>;
+
+export type PracticalProps = FormComponentProps<
+  string,
+  "practicals",
+  "setPracticals"
+>;

@@ -1,8 +1,13 @@
 import { useState } from "react";
-import { practicalType } from "../types/formTypes";
+import { PracticalProps, practicalType } from "../types/formTypes";
 import Responsibilities from "./Responsibilities";
 
-export default function Practical() {
+export default function Practical({
+  props,
+  deleteComponent,
+}:
+  | { props: PracticalProps; deleteComponent: Function }
+  | { props: undefined; deleteComponent: undefined }) {
   const [practicalInfo, setPracticalInfo] = useState<practicalType>({
     company: undefined,
     position: undefined,
@@ -57,6 +62,17 @@ export default function Practical() {
           setPracticalInfo({ ...practicalInfo, endDate: e.target.value })
         }
       />
+      {props ? (
+        <button
+          onClick={(e) =>
+            deleteComponent(e, props.id, props.practicals, props.setPracticals)
+          }
+        >
+          Delete Practical Experience
+        </button>
+      ) : (
+        ""
+      )}
     </fieldset>
   );
 }
