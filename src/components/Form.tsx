@@ -1,13 +1,28 @@
-import { useState } from "react";
 import Education from "./Education";
 import PersonalInfo from "./PersonalInfo";
 import Practical from "./Practical";
 import { v4 as uuidv4 } from "uuid";
 import { MouseEvent } from "react";
+import {
+  EducationFormProps,
+  PersonalFormProps,
+  PracticalFormProps,
+} from "../types/formTypes";
 
-export default function Form() {
-  const [educations, setEducations] = useState<string[]>([]);
-  const [practicals, setPracticals] = useState<string[]>([]);
+export default function Form({
+  educationProps,
+  practicalProps,
+  personalProps,
+  setEditStatus,
+}: {
+  educationProps: EducationFormProps;
+  practicalProps: PracticalFormProps;
+  personalProps: PersonalFormProps;
+  setEditStatus: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const { educations, setEducations } = educationProps;
+  const { practicals, setPracticals } = practicalProps;
+  const { personalInfo, setPersonalInfo } = personalProps;
 
   function newComponent(e: MouseEvent, component: string) {
     e.preventDefault();
@@ -35,12 +50,21 @@ export default function Form() {
     setState(copiedArray);
   }
 
+  function submitForm(e: MouseEvent) {
+    e.preventDefault();
+
+    setEditStatus(true);
+  }
+
   return (
     <form action="">
-      <PersonalInfo></PersonalInfo>
+      <PersonalInfo
+        personalInfo={personalInfo}
+        setPersonalInfo={setPersonalInfo}
+      ></PersonalInfo>
       <Education props={undefined} deleteComponent={undefined}></Education>
       {educations.length !== 0
-        ? educations.map((id) => {
+        ? educations.map((id: string) => {
             return (
               <Education
                 key={id}
@@ -55,7 +79,7 @@ export default function Form() {
       </button>
       <Practical props={undefined} deleteComponent={undefined}></Practical>
       {practicals.length !== 0
-        ? practicals.map((id) => {
+        ? practicals.map((id: string) => {
             return (
               <Practical
                 key={id}
@@ -68,6 +92,7 @@ export default function Form() {
       <button onClick={(e) => newComponent(e, "practical")}>
         + Practical experience
       </button>
+      <button onClick={(e) => submitForm(e)}>Submit</button>
     </form>
   );
 }
