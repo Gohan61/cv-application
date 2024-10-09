@@ -53,7 +53,13 @@ export default function Education({
       {props.id !== "default" ? (
         <button
           onClick={(e) =>
-            deleteComponent!(e, props.id, props.educations, props.setEducations)
+            deleteComponent!(
+              e,
+              props.id,
+              props.educations,
+              props.setEducations,
+              undefined
+            )
           }
         >
           Delete Educational Experience
