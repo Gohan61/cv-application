@@ -15,6 +15,7 @@ function App() {
     default: {
       company: "",
       position: "",
+      responsibilities: { default: "" },
       startDate: "",
       endDate: "",
     },

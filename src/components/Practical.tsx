@@ -4,9 +4,14 @@ import Responsibilities from "./Responsibilities";
 export default function Practical({
   props,
   deleteComponent,
+  newComponent,
 }:
-  | { props: PracticalProps; deleteComponent: Function }
-  | { props: PracticalProps; deleteComponent: undefined }) {
+  | { props: PracticalProps; deleteComponent: Function; newComponent: Function }
+  | {
+      props: PracticalProps;
+      deleteComponent: undefined;
+      newComponent: Function;
+    }) {
   const { id, practicals, setPracticals } = props;
 
   return (
@@ -40,8 +45,22 @@ export default function Practical({
       />
       <ul>
         <p>Main responsibilities in your jobs:</p>
-        <Responsibilities></Responsibilities>
+        {Object.keys(practicals[id].responsibilities).map((resp: string) => {
+          return (
+            <Responsibilities
+              key={resp}
+              responsibility={practicals[id].responsibilities[resp]}
+              respId={resp}
+              practicals={practicals}
+              id={id}
+              setPracticals={setPracticals}
+            ></Responsibilities>
+          );
+        })}
       </ul>
+      <button onClick={(e) => newComponent(e, "responsibility", id)}>
+        New responsibility
+      </button>
       <label htmlFor="startDate">Start of job: </label>
       <input
         type="date"

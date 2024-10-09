@@ -1,9 +1,18 @@
-import { useState } from "react";
-import { responsibilityType } from "../types/formTypes";
+import { practicalType } from "../types/formTypes";
 
-export default function Responsibilities() {
-  const [responsibility, setResponsibility] = useState<responsibilityType>("");
-
+export default function Responsibilities({
+  responsibility,
+  practicals,
+  id,
+  respId,
+  setPracticals,
+}: {
+  responsibility: string;
+  practicals: practicalType;
+  id: string;
+  respId: string;
+  setPracticals: React.Dispatch<React.SetStateAction<practicalType>>;
+}) {
   return (
     <li>
       <label htmlFor="responsibilities">Responsibilities</label>
@@ -11,7 +20,18 @@ export default function Responsibilities() {
         type="text"
         id="responsibilities"
         value={responsibility}
-        onChange={(e) => setResponsibility(e.target.value)}
+        onChange={(e) =>
+          setPracticals({
+            ...practicals,
+            [id]: {
+              ...practicals[id],
+              responsibilities: {
+                ...practicals[id].responsibilities,
+                [respId]: e.target.value,
+              },
+            },
+          })
+        }
       />
     </li>
   );

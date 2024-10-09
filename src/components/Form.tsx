@@ -26,7 +26,11 @@ export default function Form({
   const { practicals, setPracticals } = practicalProps;
   const { personalInfo, setPersonalInfo } = personalProps;
 
-  function newComponent(e: MouseEvent, component: string) {
+  function newComponent(
+    e: MouseEvent,
+    component: string,
+    componentId: string | undefined
+  ) {
     e.preventDefault();
     const newId = uuidv4();
 
@@ -40,7 +44,26 @@ export default function Form({
     if (component === "practical") {
       setPracticals({
         ...practicals,
-        [newId]: { company: "", position: "", startDate: "", endDate: "" },
+        [newId]: {
+          company: "",
+          position: "",
+          responsibilities: { default: "" },
+          startDate: "",
+          endDate: "",
+        },
+      });
+    }
+
+    if (component === "responsibility" && componentId) {
+      setPracticals({
+        ...practicals,
+        [componentId]: {
+          ...practicals[componentId],
+          responsibilities: {
+            ...practicals[componentId].responsibilities,
+            [newId]: "",
+          },
+        },
       });
     }
   }
@@ -90,12 +113,13 @@ export default function Form({
             }
           })
         : ""}
-      <button onClick={(e) => newComponent(e, "education")}>
+      <button onClick={(e) => newComponent(e, "education", undefined)}>
         + Educational experience
       </button>
       <Practical
         props={{ id: "default", practicals, setPracticals }}
         deleteComponent={undefined}
+        newComponent={newComponent}
       ></Practical>
       {Object.keys(practicals).length !== 1
         ? Object.keys(practicals).map((id: string) => {
@@ -105,12 +129,13 @@ export default function Form({
                   key={id}
                   props={{ id, practicals, setPracticals }}
                   deleteComponent={deleteComponent}
+                  newComponent={newComponent}
                 ></Practical>
               );
             }
           })
         : ""}
-      <button onClick={(e) => newComponent(e, "practical")}>
+      <button onClick={(e) => newComponent(e, "practical", undefined)}>
         + Practical experience
       </button>
       <button onClick={(e) => submitForm(e)}>Submit</button>

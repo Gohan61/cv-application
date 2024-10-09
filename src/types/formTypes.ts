@@ -16,12 +16,13 @@ export interface practicalType {
   [key: string]: {
     company: string | undefined;
     position: string | undefined;
+    responsibilities: responsibility;
     startDate: string | undefined;
     endDate: string | undefined;
   };
 }
 
-export type responsibilityType = string | undefined;
+type responsibility = { [key: string]: string };
 
 type AppComponentProps<
   T extends object,
