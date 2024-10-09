@@ -1,5 +1,3 @@
-import { educationType } from "../types/formTypes";
-import { useState } from "react";
 import { EducationProps } from "../types/formTypes";
 
 export default function Education({
@@ -7,12 +5,8 @@ export default function Education({
   deleteComponent,
 }:
   | { props: EducationProps; deleteComponent: Function }
-  | { props: undefined; deleteComponent: undefined }) {
-  const [educationInfo, setEducationInfo] = useState<educationType>({
-    school: undefined,
-    study: undefined,
-    graduation: undefined,
-  });
+  | { props: EducationProps; deleteComponent: undefined }) {
+  const { id, educations, setEducations } = props;
 
   return (
     <fieldset>
@@ -22,35 +16,44 @@ export default function Education({
         type="text"
         id="school"
         name="school"
-        value={educationInfo.school}
-        onChange={(e) =>
-          setEducationInfo({ ...educationInfo, school: e.target.value })
-        }
+        value={educations[id].school}
+        onChange={(e) => {
+          setEducations({
+            ...educations,
+            [id]: { ...educations[id], school: e.target.value },
+          });
+        }}
       />
       <label htmlFor="study">Title of degree: </label>
       <input
         type="text"
         id="study"
         name="study"
-        value={educationInfo.study}
-        onChange={(e) =>
-          setEducationInfo({ ...educationInfo, study: e.target.value })
-        }
+        value={educations[id].study}
+        onChange={(e) => {
+          setEducations({
+            ...educations,
+            [id]: { ...educations[id], study: e.target.value },
+          });
+        }}
       />
       <label htmlFor="graduation">Year of graduation: </label>
       <input
         type="date"
         id="graduation"
         name="graduation"
-        value={educationInfo.graduation}
+        value={educations[id].graduation}
         onChange={(e) =>
-          setEducationInfo({ ...educationInfo, graduation: e.target.value })
+          setEducations({
+            ...educations,
+            [id]: { ...educations[id], graduation: e.target.value },
+          })
         }
       />
-      {props ? (
+      {props.id !== "default" ? (
         <button
           onClick={(e) =>
-            deleteComponent(e, props.id, props.educations, props.setEducations)
+            deleteComponent!(e, props.id, props.educations, props.setEducations)
           }
         >
           Delete Educational Experience

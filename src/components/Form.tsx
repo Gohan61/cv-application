@@ -5,8 +5,10 @@ import { v4 as uuidv4 } from "uuid";
 import { MouseEvent } from "react";
 import {
   EducationFormProps,
+  educationType,
   PersonalFormProps,
   PracticalFormProps,
+  practicalType,
 } from "../types/formTypes";
 
 export default function Form({
@@ -29,25 +31,34 @@ export default function Form({
     const newId = uuidv4();
 
     if (component === "education") {
-      setEducations([...educations, newId]);
+      setEducations({
+        ...educations,
+        [newId]: { school: "", study: "", graduation: "" },
+      });
     }
 
     if (component === "practical") {
-      setPracticals([...practicals, newId]);
+      setPracticals({
+        ...practicals,
+        [newId]: { company: "", position: "", startDate: "", endDate: "" },
+      });
     }
   }
 
   function deleteComponent(
     e: MouseEvent,
     id: string,
-    state: string[],
-    setState: React.Dispatch<React.SetStateAction<string[]>>
+    state: { [key: string]: educationType | practicalType },
+    setState: React.Dispatch<
+      React.SetStateAction<{ [key: string]: educationType | practicalType }>
+    >
   ) {
     e.preventDefault();
-    const copiedArray = [...state];
-    const index = copiedArray.indexOf(id);
-    copiedArray.splice(index, 1);
-    setState(copiedArray);
+    const copiedObject = { ...state };
+    delete copiedObject[id];
+    console.log(copiedObject);
+
+    setState(copiedObject);
   }
 
   function submitForm(e: MouseEvent) {
@@ -62,31 +73,41 @@ export default function Form({
         personalInfo={personalInfo}
         setPersonalInfo={setPersonalInfo}
       ></PersonalInfo>
-      <Education props={undefined} deleteComponent={undefined}></Education>
-      {educations.length !== 0
-        ? educations.map((id: string) => {
-            return (
-              <Education
-                key={id}
-                props={{ id, educations, setEducations }}
-                deleteComponent={deleteComponent}
-              ></Education>
-            );
+      <Education
+        props={{ id: "default", educations, setEducations }}
+        deleteComponent={undefined}
+      ></Education>
+      {Object.keys(educations).length !== 1
+        ? Object.keys(educations).map((id: string) => {
+            if (id !== "default") {
+              return (
+                <Education
+                  key={id}
+                  props={{ id, educations, setEducations }}
+                  deleteComponent={deleteComponent}
+                ></Education>
+              );
+            }
           })
         : ""}
       <button onClick={(e) => newComponent(e, "education")}>
         + Educational experience
       </button>
-      <Practical props={undefined} deleteComponent={undefined}></Practical>
-      {practicals.length !== 0
-        ? practicals.map((id: string) => {
-            return (
-              <Practical
-                key={id}
-                props={{ id, practicals, setPracticals }}
-                deleteComponent={deleteComponent}
-              ></Practical>
-            );
+      <Practical
+        props={{ id: "default", practicals, setPracticals }}
+        deleteComponent={undefined}
+      ></Practical>
+      {Object.keys(practicals).length !== 1
+        ? Object.keys(practicals).map((id: string) => {
+            if (id !== "default") {
+              return (
+                <Practical
+                  key={id}
+                  props={{ id, practicals, setPracticals }}
+                  deleteComponent={deleteComponent}
+                ></Practical>
+              );
+            }
           })
         : ""}
       <button onClick={(e) => newComponent(e, "practical")}>

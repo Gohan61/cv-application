@@ -1,13 +1,12 @@
 import { personalInfoType } from "../types/formTypes";
-import { useState } from "react";
 
-export default function PersonalInfo() {
-  const [personalInfo, setPersonalInfo] = useState<personalInfoType>({
-    name: undefined,
-    email: undefined,
-    phoneNumber: undefined,
-  });
-
+export default function PersonalInfo({
+  personalInfo,
+  setPersonalInfo,
+}: {
+  personalInfo: personalInfoType;
+  setPersonalInfo: React.Dispatch<React.SetStateAction<personalInfoType>>;
+}) {
   return (
     <fieldset>
       <legend>Personal Info</legend>

@@ -4,37 +4,61 @@ export interface personalInfoType {
   phoneNumber: number | undefined;
 }
 
-export interface educationType {
-  school: string | undefined;
-  study: string | undefined;
-  graduation: string | undefined;
-}
+export type educationType = {
+  [key: string]: {
+    school: string | undefined;
+    study: string | undefined;
+    graduation: string | undefined;
+  };
+};
 
 export interface practicalType {
-  company: string | undefined;
-  position: string | undefined;
-  startDate: string | undefined;
-  endDate: string | undefined;
+  [key: string]: {
+    company: string | undefined;
+    position: string | undefined;
+    startDate: string | undefined;
+    endDate: string | undefined;
+  };
 }
 
 export type responsibilityType = string | undefined;
 
-type FormComponentProps<T, K extends string, SetterKey extends string> = {
-  [key in K]: T[];
+type AppComponentProps<
+  T extends object,
+  K extends string,
+  SetterKey extends string,
+> = {
+  [key in K]: T;
 } & {
-  [setState in SetterKey]: React.Dispatch<React.SetStateAction<T[]>>;
-} & {
-  id: string;
+  [setState in SetterKey]: React.Dispatch<React.SetStateAction<T>>;
 };
 
-export type EducationProps = FormComponentProps<
-  string,
+export type EducationFormProps = AppComponentProps<
+  educationType,
   "educations",
   "setEducations"
 >;
 
-export type PracticalProps = FormComponentProps<
-  string,
+export type PracticalFormProps = AppComponentProps<
+  practicalType,
   "practicals",
   "setPracticals"
 >;
+
+export type PersonalFormProps = AppComponentProps<
+  personalInfoType,
+  "personalInfo",
+  "setPersonalInfo"
+>;
+
+export type EducationProps = {
+  id: string;
+  educations: educationType;
+  setEducations: React.Dispatch<React.SetStateAction<educationType>>;
+};
+
+export type PracticalProps = {
+  id: string;
+  practicals: practicalType;
+  setPracticals: React.Dispatch<React.SetStateAction<practicalType>>;
+};
