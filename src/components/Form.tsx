@@ -74,14 +74,23 @@ export default function Form({
     state: { [key: string]: educationType | practicalType },
     setState: React.Dispatch<
       React.SetStateAction<{ [key: string]: educationType | practicalType }>
-    >
+    >,
+    respId: string | undefined
   ) {
     e.preventDefault();
     const copiedObject = { ...state };
-    delete copiedObject[id];
-    console.log(copiedObject);
 
-    setState(copiedObject);
+    if (respId) {
+      console.log(id);
+
+      delete copiedObject[id].responsibilities[respId];
+
+      setState(copiedObject);
+    } else {
+      delete copiedObject[id];
+
+      setState(copiedObject);
+    }
   }
 
   function submitForm(e: MouseEvent) {
@@ -117,8 +126,9 @@ export default function Form({
         + Educational experience
       </button>
       <Practical
+        key={"default"}
         props={{ id: "default", practicals, setPracticals }}
-        deleteComponent={undefined}
+        deleteComponent={deleteComponent}
         newComponent={newComponent}
       ></Practical>
       {Object.keys(practicals).length !== 1

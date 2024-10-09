@@ -9,7 +9,7 @@ export default function Practical({
   | { props: PracticalProps; deleteComponent: Function; newComponent: Function }
   | {
       props: PracticalProps;
-      deleteComponent: undefined;
+      deleteComponent: Function;
       newComponent: Function;
     }) {
   const { id, practicals, setPracticals } = props;
@@ -54,6 +54,7 @@ export default function Practical({
               practicals={practicals}
               id={id}
               setPracticals={setPracticals}
+              deleteComponent={deleteComponent}
             ></Responsibilities>
           );
         })}
@@ -90,7 +91,13 @@ export default function Practical({
       {id !== "default" ? (
         <button
           onClick={(e) =>
-            deleteComponent!(e, props.id, props.practicals, props.setPracticals)
+            deleteComponent(
+              e,
+              props.id,
+              props.practicals,
+              props.setPracticals,
+              undefined
+            )
           }
         >
           Delete Practical Experience

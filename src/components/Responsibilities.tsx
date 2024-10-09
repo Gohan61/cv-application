@@ -6,33 +6,48 @@ export default function Responsibilities({
   id,
   respId,
   setPracticals,
+  deleteComponent,
 }: {
   responsibility: string;
   practicals: practicalType;
   id: string;
   respId: string;
   setPracticals: React.Dispatch<React.SetStateAction<practicalType>>;
+  deleteComponent: Function;
 }) {
   return (
-    <li>
-      <label htmlFor="responsibilities">Responsibilities</label>
-      <input
-        type="text"
-        id="responsibilities"
-        value={responsibility}
-        onChange={(e) =>
-          setPracticals({
-            ...practicals,
-            [id]: {
-              ...practicals[id],
-              responsibilities: {
-                ...practicals[id].responsibilities,
-                [respId]: e.target.value,
+    <>
+      <li>
+        <label htmlFor="responsibilities">Responsibilities</label>
+        <input
+          type="text"
+          id="responsibilities"
+          value={responsibility}
+          onChange={(e) =>
+            setPracticals({
+              ...practicals,
+              [id]: {
+                ...practicals[id],
+                responsibilities: {
+                  ...practicals[id].responsibilities,
+                  [respId]: e.target.value,
+                },
               },
-            },
-          })
-        }
-      />
-    </li>
+            })
+          }
+        />
+      </li>
+      {respId !== "default" ? (
+        <button
+          onClick={(e) => {
+            deleteComponent(e, id, practicals, setPracticals, respId);
+          }}
+        >
+          Delete responsibility
+        </button>
+      ) : (
+        ""
+      )}
+    </>
   );
 }
