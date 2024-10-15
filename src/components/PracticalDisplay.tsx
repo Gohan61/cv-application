@@ -5,6 +5,7 @@ export default function PracticalDisplay({
     company: string | undefined;
     position: string | undefined;
     startDate: string | undefined;
+    responsibilities: { [key: string]: string } | undefined;
     endDate: string | undefined;
   };
 }) {
@@ -21,9 +22,15 @@ export default function PracticalDisplay({
           {props.position}
         </p>
         <p>Main responsibilities: </p>
-        <p>
-          <span>Responsibility: </span>
-        </p>
+        {props.responsibilities
+          ? Object.keys(props.responsibilities).map((resp) => {
+              return (
+                <span>
+                  Responsibility: <p>{props.responsibilities![resp]}</p>
+                </span>
+              );
+            })
+          : ""}
       </div>
       <p>
         <span>Start of job: </span>

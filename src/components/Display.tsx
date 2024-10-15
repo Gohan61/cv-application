@@ -51,6 +51,7 @@ export default function Display({
               company: practicals[id].company,
               position: practicals[id].position,
               startDate: practicals[id].startDate,
+              responsibilities: practicals[id].responsibilities,
               endDate: practicals[id].endDate,
             }}
           ></PracticalDisplay>
