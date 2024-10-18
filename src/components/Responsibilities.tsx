@@ -20,6 +20,7 @@ export default function Responsibilities({
       <li>
         <label htmlFor="responsibilities">Responsibilities</label>
         <input
+          className="inputBorder"
           type="text"
           id="responsibilities"
           value={responsibility}
@@ -39,6 +40,7 @@ export default function Responsibilities({
       </li>
       {respId !== "default" ? (
         <button
+          className="deleteButtons"
           onClick={(e) => {
             deleteComponent(e, id, practicals, setPracticals, respId);
           }}

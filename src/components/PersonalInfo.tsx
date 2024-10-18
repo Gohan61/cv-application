@@ -8,10 +8,11 @@ export default function PersonalInfo({
   setPersonalInfo: React.Dispatch<React.SetStateAction<personalInfoType>>;
 }) {
   return (
-    <fieldset>
+    <fieldset className="pb-5">
       <legend>Personal Info</legend>
       <label htmlFor="name">Name: </label>
       <input
+        className="inputBorder"
         type="text"
         id="name"
         name="fullName"
@@ -22,6 +23,7 @@ export default function PersonalInfo({
       />
       <label htmlFor="email">Email: </label>
       <input
+        className="inputBorder"
         type="email"
         id="email"
         name="email"
@@ -32,6 +34,7 @@ export default function PersonalInfo({
       />
       <label htmlFor="phoneNumber">Phone number: </label>
       <input
+        className="inputBorder"
         type="number"
         id="phoneNumber"
         name="phoneNumber"

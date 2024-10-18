@@ -9,10 +9,11 @@ export default function Education({
   const { id, educations, setEducations } = props;
 
   return (
-    <fieldset>
+    <fieldset className="pb-5">
       <legend>Educational experience</legend>
       <label htmlFor="school">Educational institution: </label>
       <input
+        className="inputBorder"
         type="text"
         id="school"
         name="school"
@@ -26,6 +27,7 @@ export default function Education({
       />
       <label htmlFor="study">Title of degree: </label>
       <input
+        className="inputBorder"
         type="text"
         id="study"
         name="study"
@@ -39,6 +41,7 @@ export default function Education({
       />
       <label htmlFor="graduation">Year of graduation: </label>
       <input
+        className="inputBorder"
         type="date"
         id="graduation"
         name="graduation"
@@ -52,6 +55,7 @@ export default function Education({
       />
       {props.id !== "default" ? (
         <button
+          className="deleteButtons"
           onClick={(e) =>
             deleteComponent!(
               e,

@@ -100,7 +100,7 @@ export default function Form({
   }
 
   return (
-    <form action="">
+    <form className="flex-initial" action="">
       <PersonalInfo
         personalInfo={personalInfo}
         setPersonalInfo={setPersonalInfo}
@@ -122,7 +122,10 @@ export default function Form({
             }
           })
         : ""}
-      <button onClick={(e) => newComponent(e, "education", undefined)}>
+      <button
+        className="text-lg p-2 mb-2 buttonDesign"
+        onClick={(e) => newComponent(e, "education", undefined)}
+      >
         + Educational experience
       </button>
       <Practical
@@ -145,10 +148,16 @@ export default function Form({
             }
           })
         : ""}
-      <button onClick={(e) => newComponent(e, "practical", undefined)}>
+      <button
+        className="text-lg p-2 buttonDesign"
+        onClick={(e) => newComponent(e, "practical", undefined)}
+      >
         + Practical experience
       </button>
-      <button onClick={(e) => submitForm(e)}>Submit</button>
+      <br />
+      <button className="editSubmitButton" onClick={(e) => submitForm(e)}>
+        Submit
+      </button>
     </form>
   );
 }

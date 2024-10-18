@@ -15,10 +15,11 @@ export default function Practical({
   const { id, practicals, setPracticals } = props;
 
   return (
-    <fieldset>
+    <fieldset className="pb-5">
       <legend>Practical experience</legend>
       <label htmlFor="company">Company name: </label>
       <input
+        className="inputBorder"
         type="text"
         id="company"
         name="company"
@@ -32,6 +33,7 @@ export default function Practical({
       />
       <label htmlFor="position">Job position: </label>
       <input
+        className="inputBorder"
         type="text"
         id="position"
         name="position"
@@ -59,11 +61,15 @@ export default function Practical({
           );
         })}
       </ul>
-      <button onClick={(e) => newComponent(e, "responsibility", id)}>
+      <button
+        className="buttonDesign"
+        onClick={(e) => newComponent(e, "responsibility", id)}
+      >
         New responsibility
       </button>
       <label htmlFor="startDate">Start of job: </label>
       <input
+        className="inputBorder"
         type="date"
         id="startDate"
         name="startDate"
@@ -77,6 +83,7 @@ export default function Practical({
       />
       <label htmlFor="endDate">End of job: </label>
       <input
+        className="inputBorder"
         type="date"
         id="endDate"
         name="endDate"
@@ -90,6 +97,7 @@ export default function Practical({
       />
       {id !== "default" ? (
         <button
+          className="deleteButtons"
           onClick={(e) =>
             deleteComponent(
               e,
