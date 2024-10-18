@@ -8,9 +8,9 @@ This project is build according to the specification of the [CV Application less
 
 ## Live website
 
-Access the [CV Application](https://main--admirable-pothos-596c43.netlify.app/)
+Access the [CV Application](https://admirable-pothos-596c43.netlify.app/)
 
-![CV application](./cv-application-display.png)
+![CV application](./cv-new2.png)
 
 ## Run locally
 
