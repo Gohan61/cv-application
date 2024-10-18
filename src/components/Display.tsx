@@ -63,8 +63,17 @@ export default function Display({
           ></PracticalDisplay>
         );
       })}
-      <button className="editSubmitButton" onClick={() => setEditStatus(false)}>
+      <button
+        className="printPageButton editSubmitButton"
+        onClick={() => setEditStatus(false)}
+      >
         Edit
+      </button>
+      <button
+        className="printPageButton editSubmitButton ml-10"
+        onClick={() => window.print()}
+      >
+        Print / Save to pdf
       </button>
     </>
   );

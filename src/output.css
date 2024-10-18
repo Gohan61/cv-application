@@ -753,6 +753,18 @@ select {
   margin-bottom: 0.5rem;
 }
 
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
+.ml-10 {
+  margin-left: 2.5rem;
+}
+
 .table {
   display: table;
 }
@@ -954,4 +966,10 @@ body {
 .practical {
   display: flex;
   flex-direction: column;
+}
+
+@media print {
+  .printPageButton {
+    display: none;
+  }
 }
