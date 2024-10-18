@@ -29,7 +29,6 @@ function App() {
 
   return (
     <>
-      <h1>Create your own CV</h1>
       {editStatus ? (
         <Display
           setEditStatus={setEditStatus}
@@ -38,12 +37,16 @@ function App() {
           personalInfo={personalInfo}
         ></Display>
       ) : (
-        <Form
-          educationProps={{ educations, setEducations }}
-          practicalProps={{ practicals, setPracticals }}
-          personalProps={{ personalInfo, setPersonalInfo }}
-          setEditStatus={setEditStatus}
-        ></Form>
+        <>
+          <h1 className="text-4xl">Create your own CV</h1>
+
+          <Form
+            educationProps={{ educations, setEducations }}
+            practicalProps={{ practicals, setPracticals }}
+            personalProps={{ personalInfo, setPersonalInfo }}
+            setEditStatus={setEditStatus}
+          ></Form>
+        </>
       )}
     </>
   );
