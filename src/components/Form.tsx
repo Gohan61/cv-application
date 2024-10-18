@@ -83,7 +83,7 @@ export default function Form({
     if (respId) {
       console.log(id);
 
-      delete copiedObject[id].responsibilities[respId];
+      delete (copiedObject[id] as any).responsibilities[respId];
 
       setState(copiedObject);
     } else {
