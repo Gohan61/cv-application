@@ -1,4 +1,4 @@
-import { PracticalProps, practicalType } from "../types/formTypes";
+import { PracticalProps } from "../types/formTypes";
 import Responsibilities from "./Responsibilities";
 
 export default function Practical({
