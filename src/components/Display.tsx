@@ -17,19 +17,25 @@ export default function Display({
   return (
     <>
       <div className="personal">
-        <h2>Personal info</h2>
-        <p>
-          <span>Name: </span>
-          {personalInfo.name}
-        </p>
-        <p>
-          <span>Email: </span>
-          {personalInfo.email}
-        </p>
-        <p>
-          <span>Phone Number: </span>
-          {personalInfo.phoneNumber}
-        </p>
+        <h2 className="font-bold text-2xl mb-2 text-center bg-slate-500 text-white">
+          Personal info
+        </h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td>{personalInfo.name}</td>
+            </tr>
+            <tr>
+              <th>Email:</th>
+              <td> {personalInfo.email}</td>
+            </tr>
+            <tr>
+              <th>Phone Number:</th>
+              <td> {personalInfo.phoneNumber}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       {Object.keys(educations).map((id: string) => {
         return (
@@ -57,7 +63,9 @@ export default function Display({
           ></PracticalDisplay>
         );
       })}
-      <button onClick={() => setEditStatus(false)}>Edit</button>
+      <button className="editSubmitButton" onClick={() => setEditStatus(false)}>
+        Edit
+      </button>
     </>
   );
 }

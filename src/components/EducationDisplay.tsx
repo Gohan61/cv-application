@@ -9,19 +9,23 @@ export default function EducationDisplay({
 }) {
   return (
     <div className="education">
-      <h2>Educational experience</h2>
-      <p>
-        <span>Educational institution: </span>
-        {props.school}
-      </p>
-      <p>
-        <span>Title of degree: </span>
-        {props.study}
-      </p>
-      <p>
-        <span>Year of graduation: </span>
-        {props.graduation}
-      </p>
+      <h2 className="font-bold text-2xl mb-2 text-center bg-slate-500 text-white">
+        Educational experience
+      </h2>
+      <table>
+        <tr>
+          <th>Educational institution:</th>
+          <td>{props.school}</td>
+        </tr>
+        <tr>
+          <th>Title of degree:</th>
+          <td>{props.study}</td>
+        </tr>
+        <tr>
+          <th>Year of graduation:</th>
+          <td>{props.graduation}</td>
+        </tr>
+      </table>
     </div>
   );
 }

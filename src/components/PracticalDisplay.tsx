@@ -11,35 +11,44 @@ export default function PracticalDisplay({
 }) {
   return (
     <div className="practical">
-      <h2>Practical experience</h2>
-      <p>
-        <span>Company name: </span>
-        {props.company}
-      </p>
-      <div className="job">
-        <p>
-          <span>Job position: </span>
-          {props.position}
-        </p>
-        <p>Main responsibilities: </p>
-        {props.responsibilities
-          ? Object.keys(props.responsibilities).map((resp) => {
-              return (
-                <span>
-                  Responsibility: <p>{props.responsibilities![resp]}</p>
-                </span>
-              );
-            })
-          : ""}
-      </div>
-      <p>
-        <span>Start of job: </span>
-        {props.startDate}
-      </p>
-      <p>
-        <span>End of job: </span>
-        {props.endDate}
-      </p>
+      <h2 className="font-bold text-2xl mb-2 text-center bg-slate-500 text-white">
+        Practical experience
+      </h2>
+      <table>
+        <tbody>
+          <tr>
+            <th>Company name:</th>
+            <td>{props.company}</td>
+          </tr>
+          <tr>
+            <th>Job position:</th>
+            <td>{props.position}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>Main responsibilities:</th>
+            {props.responsibilities
+              ? Object.keys(props.responsibilities).map((resp) => {
+                  return (
+                    <td key={resp} className="font-normal">
+                      {props.responsibilities![resp]}
+                    </td>
+                  );
+                })
+              : ""}
+          </tr>
+
+          <tr>
+            <th>Start of job:</th>
+            <td>{props.startDate}</td>
+          </tr>
+          <tr>
+            <th>End of job:</th>
+            <td>{props.endDate}</td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   );
 }
